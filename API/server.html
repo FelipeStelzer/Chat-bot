@@ -1,0 +1,43 @@
+<script type="importmap">
+  {
+    "imports": {
+      "@google/generative-ai": "https://esm.run/@google/generative-ai"
+    }
+  }
+</script>
+
+<html>
+
+<body>
+
+  Meu chat bot
+
+
+  
+
+  <!-- ... Your HTML and CSS -->
+  <!-- Import @google/generative-ai, as shown above. -->
+  <script type="module">
+    import { GoogleGenerativeAI } from "@google/generative-ai";
+
+    // Fetch your API_KEY
+    const API_KEY = "AIzaSyAJ78PyaPNII9w-SXN0_p6DFM3jT86zWJU";
+
+    // Make sure to include these imports:
+    // import { GoogleGenerativeAI } from "@google/generative-ai";
+    const genAI = new GoogleGenerativeAI(API_KEY);
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+    const prompt = "agora vc é um nutricionista fitness que ajuda com dicas de alimentação, as dicas devem ser divertidas."+
+"Regra 1 = você não reponde coisas diferentes disso, ou seja coisas que não tenham haver com alimentação e saúde. (seu nome é rob)"+
+"vamos iniciar o atendimento dos seus clientes?";
+
+    const result = await model.generateContent(prompt);
+    console.log(result.response.text());
+
+  </script>
+</body>
+
+
+
+</html>
